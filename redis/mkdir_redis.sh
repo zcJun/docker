@@ -1,10 +1,11 @@
 
+
 #!/bin/bash
 
 # 定义所有目录
 BASE_DIR="/data"
-MYSQL_DIR="${BASE_DIR}/redis"
-DATA_DIR="${MYSQL_DIR}/data"
+REDIS_DIR="${BASE_DIR}/redis"
+DATA_DIR="${REDIS_DIR}/data"
 
 # 一次性创建所有目录
 echo "创建所有目录..."
@@ -17,16 +18,16 @@ chmod 755 "${DATA_DIR}" || { echo "设置 data 权限失败！"; exit 1; }
 # 如果系统启用了 SELinux，设置上下文
 if command -v selinuxenabled &> /dev/null && selinuxenabled; then
     echo "检测到 SELinux 已启用，设置上下文..."
-    chcon -Rt container_file_t "${MYSQL_DIR}" || { echo "设置 SELinux 上下文失败！"; exit 1; }
+    chcon -Rt container_file_t "${REDIS_DIR}" || { echo "设置 SELinux 上下文失败！"; exit 1; }
 fi
 
 echo "目录创建和权限设置完成！"
 
 # 创建 my.cnf 文件
-MYSQL_CONF="${MYSQL_DIR}/redis.conf"
+REDIS_CONF="${REDIS_DIR}/redis.conf"
 
 echo "创建 MySQL 配置文件..."
-cat > "${MYSQL_CONF}" << 'EOF'
+cat > "${REDIS_CONF}" << 'EOF'
 
 # 绑定的IP地址，0.0.0.0 表示允许所有IP连接
 bind 0.0.0.0
@@ -65,7 +66,8 @@ maxmemory-policy noeviction
 EOF
 
 # 确保配置文件权限正确
-chmod 644 "${MYSQL_CONF}" || { echo "设置 redis.conf 权限失败！"; exit 1; }
+chmod 644 "${REDIS_CONF}" || { echo "设置 redis.conf 权限失败！"; exit 1; }
 
 echo "Redis 配置文件创建完成！"
+
 
