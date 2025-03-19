@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    ports:
+      - "3306:3306"
+    volumes:
+      - /data/mysql/conf:/etc/mysql/conf.d
+      - /data/mysql/data:/var/lib/mysql
+      - /data/mysql/log:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: zcj+-.o0O0O0O0o0
+      TZ: Asia/Shanghai
+    restart: always
