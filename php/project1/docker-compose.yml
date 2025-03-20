@@ -1,0 +1,31 @@
+
+version: '3'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    container_name: project1-php   # 自定义容器名
+    volumes:
+      - /data/php/project1/project:/var/www/html/project
+    networks:
+      - project1-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: project1-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /data/php/project1/project:/var/www/html/project
+    depends_on:
+      - php
+    networks:
+      - project1-network
+
+networks:
+  project1-network:
+    driver: bridge
