@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: my_python_app
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "10011:10011"
+    command: >
+      /bin/sh -c "python main.py > /app/run.log 2>&1"
+    environment:
+      - TZ=Asia/Shanghai
+      - PYTHONUNBUFFERED=1
