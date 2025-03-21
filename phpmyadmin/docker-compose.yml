@@ -9,3 +9,4 @@ services:
     environment:
       PMA_HOST: PMA_HOST # 数据库服务器地址
       PMA_PORT: 3306 # 数据库服务器端口
+    restart: always
