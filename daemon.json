@@ -1,0 +1,15 @@
+
+
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "500m",
+    "max-file": "3"
+  },
+  "registry-mirrors": [
+    "https://4tqbfyyn.mirror.aliyuncs.com",
+    "https://mirror.ccs.tencentyun.com",
+    "https://hub-mirror.c.163.com",
+    "https://docker.mirrors.ustc.edu.cn"
+  ]
+}
