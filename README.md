@@ -22,4 +22,4 @@
 - 1.把拉取文件夹`python_project`相关文件部署到 `/data/python/python_project`
 - 2.进入到 `cd /data/python/python_project`
 - 3.执行命令编译 `docker-compose up -build` 编译项目，编译完项目使用ctrl+c，再使用 `docker-compose up -d`运行项目
-- 相关命令：重启`docker-compose restart app`， 停止`docker-compose stop`， 停止`docker-compose start`， 前台启动`docker-compose up`，后台启动`docker-compose up -d`等等。 
+- 相关命令：重启`docker-compose restart app`， 停止`docker-compose stop`， 启动`docker-compose start`， 前台启动`docker-compose up`，后台启动`docker-compose up -d`等等。 
