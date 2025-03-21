@@ -11,6 +11,7 @@ services:
       - /data/php/project1/project:/var/www/html/project
     networks:
       - project1-network
+    restart: always
 
   nginx:
     build:
@@ -25,6 +26,7 @@ services:
       - php
     networks:
       - project1-network
+    restart: always
 
 networks:
   project1-network:
