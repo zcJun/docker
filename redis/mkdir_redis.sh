@@ -1,5 +1,3 @@
-
-
 #!/bin/bash
 
 # 定义所有目录
@@ -9,7 +7,7 @@ DATA_DIR="${REDIS_DIR}/data"
 
 # 一次性创建所有目录
 echo "创建所有目录..."
-mkdir -p "${DATA_DIR}"|| { echo "创建失败！"; exit 1; }
+mkdir -p "${DATA_DIR}" || { echo "创建失败！"; exit 1; }
 
 # 设置目录权限（改为 755）
 echo "设置目录权限..."
@@ -23,10 +21,10 @@ fi
 
 echo "目录创建和权限设置完成！"
 
-# 创建 my.cnf 文件
+# 创建 redis.conf 文件
 REDIS_CONF="${REDIS_DIR}/redis.conf"
 
-echo "创建 MySQL 配置文件..."
+echo "创建 Redis 配置文件..."
 cat > "${REDIS_CONF}" << 'EOF'
 
 # 绑定的IP地址，0.0.0.0 表示允许所有IP连接
@@ -36,7 +34,7 @@ bind 0.0.0.0
 port 6379
 
 # 设置Redis的访问密码
-requirepass password
+requirepass P@ssW0rd
 
 # RDB持久化设置
 save 900 1
@@ -69,5 +67,4 @@ EOF
 chmod 644 "${REDIS_CONF}" || { echo "设置 redis.conf 权限失败！"; exit 1; }
 
 echo "Redis 配置文件创建完成！"
-
-
+echo "配置文件路径: ${REDIS_CONF}"
