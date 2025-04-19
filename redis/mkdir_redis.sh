@@ -34,7 +34,7 @@ bind 0.0.0.0
 port 6379
 
 # 设置Redis的访问密码
-requirepass P@ssW0rd
+requirepass password
 
 # RDB持久化设置
 save 900 1
